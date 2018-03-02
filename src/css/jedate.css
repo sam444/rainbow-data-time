@@ -1,0 +1,251 @@
+/**
+ @Name : jeDate 日期控件
+ @Author: chen guojun
+ @QQ群：516754269
+ @官网：http://www.jemui.com/ 或 https://github.com/singod/jeDate
+ */
+ .jedate{display:flex; justify-content: space-between;}
+ .jeinpbox{width: 1%;flex: 1 1 auto;}
+ .daysul tbody tr td:first-child p .solar{
+     color: #ff0000;
+ }
+ .daysul tbody tr td.other:first-child p .solar{
+     color: #cccccc;
+ }
+ .daysul tbody tr td.disabled:first-child p .solar{
+     color: #cccccc;
+ }
+ .daysul tbody tr td:last-child p .solar{
+     color: #ff0000;
+ }
+ .daysul tbody tr td.other:last-child p .solar{
+     color: #cccccc;
+ }
+ .daysul tbody tr td.disabled:last-child p .solar{
+     color: #cccccc;
+ }
+ .jedateblue .daysul td.actdate, .jedateblue .daysul td.actdate:hover, .jedateblue .daysul td.actdate .solar {
+     color: #fff;
+ }
+ /*vera删除work background-color*/
+ .jedateblue .daysul td .works {
+     width: 5px;
+     height: 5px;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     position: absolute;
+     right: 2px;
+     top: 4px;
+ }
+ /*vera work文字color*/
+ .jedateblue .daysul td .works + p > span.solar{
+     color: #212529;
+ }
+  /*vera work文字 disabled color*/
+ .jedateblue .daysul td.disabled .works + p > span.solar{
+     color: #cecece;
+  }
+  /*今日*/
+  .jedateblue .daysul td.actdate{
+     background-color: #007bff;
+  }
+  .jedateblue .daysul td.actdate .works + p > span.solar{
+     color: #fff;
+  }
+  .jedateblue .daysul td.actdate .marks + p > span.solar{
+     color: #fff;
+  }
+ /*vera添加外框、圆角、宽度*/
+  .jedatebox{min-width:230px;height:auto; font-family:'PingFangSC-Light','PingFang SC','Segoe UI','Lucida Grande','NotoSansHans-Light','Microsoft YaHei', '\5FAE\8F6F\96C5\9ED1', STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;font-size:12px; cursor:default;margin: 0;padding: 0;overflow: hidden;position: relative;border-radius: 3px; float: left;border: 1px solid rgb(215,215,215);border-radius: 5px;}
+  .jedatebox *{margin: 0;padding: 0;list-style-type:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-style:normal;font-family:'PingFangSC-Light','PingFang SC','Segoe UI','Lucida Grande','NotoSansHans-Light','Microsoft YaHei', '\5FAE\8F6F\96C5\9ED1', STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;}
+  .jedatebox ul,.jedatebox ol,.jedatebox li,.jedatebox dl{list-style-type:none;font-style:normal;font-weight: 300;}
+  /*vera修改四个图片路径及其地址*/
+  .jedatebox .yearprev{left:12px;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMCAYAAACwXJejAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADoSURBVChTZY6/TsJQFMa/c9uhAyMDA0tNJbWUsaOpA4tP4MLiI/EE+BYOMpo4sJCU1JoSCCmJTWB0cLD3eEuvxRt+0/m+850/5A6GCRE8UBVtsmyFf8RxbBflcSZUIFTaIba6TashCIJO8Xl4UeVENJaJ54363xUWILqr9UXoyvdDKeQCIF9bZsi9vhmztN5A6GnrRBuSjAe1/ln92NFWy3mTmiYiWyuDNqSKKcCPzPyjrRbjp81H+gTme2Z8aeuEEarZ5u9zyXwLRqmty1DNLk+XQopInc9qLf4mGGScWK+TvWMhYuD1FzmlRD+RoZJtAAAAAElFTkSuQmCC");}
+  .jedatebox .monthprev{left:32px;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMCAYAAABBV8wuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACzSURBVChTY2RAA8rq2g7//zO0o0goaWjo/P/HfJyRkYGHGSrGoKKiK/OfgfEwUFAIxGcCEWpqaiL/mP/uZmBkkADxQYBJS0uL5zcj63oGBkYNqBgYMH3/wzgZaJENlA8HTMjakQET6//fsQwM/29A+XAAdq68uroC83+W4yiWg4iHN28+YGD66wr02BewKBCAJUDg3o0bV5gYGXz/////B8SHexAE3r99/UBISOw2AwODDQDMSyy3HQbYygAAAABJRU5ErkJggg==");}
+  .jedatebox .yearnext{right:12px;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMCAYAAACwXJejAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADkSURBVChTbZC9TgJBFIXPGbYhsbCkICFkCehCY2lnY+8DyBPwDHS8ifY+gI2dBYUWsoKJP6WF5SY0u3uYnRkXAb9qzrlf5k6G3cHwrtnQOE3TDH+I46SnCHMBmSFwtc752EmSVph7IrYBHhNsmyqTGDVyPnX6oxMn7OEkB9Ey0DweDC9CU7OVLPbGo1K67/ZPr0Pl2JEqSEakuZEwCdWh9Ivs+nD8XyqBqR1MQ9yVJOVSOf5aLWahctSSfYP9NF5+vr3ehqrGS8I3TXH+vlo8uLxHJT0Xkc4+lssXX3nE4sevR7YBRqpFs2XDl9kAAAAASUVORK5CYII=");}
+  .jedatebox .monthnext{right:32px;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAMCAYAAACulacQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACiSURBVChTY1ZU194uKCKm8+Ht670MaIBZSERsCSMDg42AiKgAUMFOqDgYMEFpBkYGxgJFda3l9vb2LFAhhCQIABVEPH7+Bq6AUUld+z9YBhn8Z1gjKykSiV0SCP4z/F+BYiwyYPzPIIFVEmjUEQ4WBl8MSZAEJ/N/z2vXrn1BkUSWAPERkkAXykmIOMIkQAAo+f8GyGUgpx88ePAPVBwIGBgA0mI3DaLhVqQAAAAASUVORK5CYII=");}
+  .jedatebox .close{background-image: url("data:image/gif;base64,R0lGODlhDAAMAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAAMAAwAAAIWhI5plsjyXItRwqbq1JbTiT3cNR5AAQA7");}
+  .jedatebox .jedateym .prev,.jedatebox .jedateym .next{width:15%;height:40px; float:left;display:block;text-align: center;background-repeat: no-repeat;background-position: center center;}
+  .jedatebox em,.jedatebox i{height:40px;margin: 0;padding: 0;font-style:normal;display:inline-block;font-size: 16px;}
+  .jedatetipscon{color:#333; float:left; overflow:hidden;background-color: #FFFEF4; line-height:22px;padding:6px;border: 1px rgb(247, 206, 57) solid;font-style:normal;font-family: Arial, "\5b8b\4f53", 'sans-serif';font-size:12px;font-weight: 300;}
+  .jedatetipscon p{padding: 0;margin: 0;}
+  .jedatetipscon p.red{color: #ff0000;}
+  .jedatebox .jedate-tips{position: absolute; top: 40%; left: 50%; width: 200px; margin-left: -100px; line-height: 20px; padding: 15px; text-align: center; font-size: 12px; color: #ff0000;background-color: #FFFEF4;border: 1px rgb(247, 206, 57) solid;}
+  .jedatebox .contime ul::-webkit-scrollbar{height:6px;width:6px;margin-right:5px;background-color: #f5f5f5;transition:all 0.3s ease-in-out;border-radius:0px}
+  .jedatebox .contime ul::-webkit-scrollbar-track { -webkit-border-radius: 0px;border-radius: 0px;}
+  .jedatebox .contime ul::-webkit-scrollbar-thumb{-webkit-border-radius: 0px;border-radius: 0px;background: rgba(0,0,0,0.5); }
+  .jedatebox .contime ul::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,0.6)}
+  .jedatebox .contime ul::-webkit-scrollbar-thumb:active{background:rgba(0,0,0,0.8)}
+  .jedatebox .contime ul::-webkit-scrollbar-thumb:window-inactive {background: rgba(0,0,0,0.4);}
+  .jedatebox .jedate-hmsmask{width:100%;display: block;background-color: rgba(0,0,0,.7);background-color:#fff\9;position: absolute;top: 0;left:0;right:0;bottom: 36px;z-index: 100;}
+  /* 蓝色风格 */
+  .jedateblue{background-color:#fff;box-shadow: 2px 2px 5px #cecece;}
+  .jedateblue ol,.jedateblue ul,.jedateblue li,.jedateblue p,.jedateblue span{margin: 0;padding: 0;list-style-type:none;}
+  /*vera删除蓝色外框白色boeder*/
+  .jedateblue.grid table thead,.jedateblue.grid table td{border: 1px #e2e2e2 solid;}
+  .jedateblue .ymsbox{overflow: hidden;background-color: #fff;}
+  /*vera修改年月日头部*/
+  .jedateblue .ymsbox .arthead{background-color: #fff;color:#22272b;height:40px; line-height:40px;text-align: center;font-size: 14px;padding: 0 50px;position: relative;}
+  .jedateblue .ymsbox .arthead.ymfix{padding: 0 50px 0 25px;}
+  .jedateblue .ymsbox .arthead.ymfix .yearnext{right: 25px;}
+  .jedateblue .ymsbox .arthead .close{right:0;}
+  .jedateblue .ymsbox .arthead em{width:25px;height:40px; line-height:40px;position:absolute;top:0;background-repeat: no-repeat;background-position: center center;cursor: pointer;}
+  /*vera年月日上部图标hover*/
+  .jedateblue .ymsbox .arthead em:hover{background-color:#fff;}
+  .jedateblue .ymsbox .arthead p{width: 100%;line-height:40px;float: left;text-align:center;font-size: 14px;}
+  /*vera年月日中部border删除*/
+  .jedateblue .ymsbox .artcont{overflow: hidden;position: relative;border-top: 1px #cecece solid;border-bottom: 1px #cecece solid;}
+  .jedateblue .ymsbox .artcont.spaer:after{width: 1px;background-color:#ddd;position: absolute;top: 0;bottom: 0;left:49.8%;content: "";}
+  .jedateblue .ymsbox .ymcon{width: 230px;padding:9px 8px;float: left;background-color:#fff;overflow:hidden;}
+  .jedateblue .ymsbox .ymcon.spaer{border-left: 1px solid #ddd;}
+  .jedateblue .ymsbox .ymcon .yul,.jedateblue .ymcon .ymul{width: 100%;border-collapse: collapse;border-spacing: 0;}
+  .jedateblue .ymsbox .ymcon .yul td{width:70px;height:41px;text-align:center;position:relative; overflow:hidden;font-size: 14px;font-family: Arial, "\5b8b\4f53", 'sans-serif';}
+  .jedateblue .ymsbox .ymcon .ymul td{padding:0 9px;height:51px;text-align:center;position:relative; overflow:hidden;font-size: 14px;font-family: Arial, "\5b8b\4f53", 'sans-serif';}
+  .jedateblue .ymsbox .ymcon td.disabled{ color:#bbb;}
+  .jedateblue .ymsbox .ymcon td.actdate,.jedateblue .ymsbox .ymcon td.actdate:hover{background-color: #007bff;color:#fff;}
+  .jedateblue .ymsbox .ymcon td.disabled:hover{background-color: #fff;color:#bbb;}
+  .jedateblue .ymsbox .ymcon td:hover{background-color: #F2F2F2;}
+  .jedateblue .ymsbox .ymcon td.contain,.jedateblue .ymsbox .ymcon td.contain:hover{background-color: #D0F0E3;}
+  .jedateblue .daybox{overflow: hidden;background-color: #fff;}
+  /*vera修改头部底色*/
+  .jedateblue .daybox .arthead{background-color: #fff;color:#fff;height:40px; line-height:40px;text-align: center;font-size: 14px;padding: 0 50px;position: relative;}
+  .jedateblue .daybox .arthead em{width:25px;height:40px; line-height:40px;position:absolute;top:0;background-repeat: no-repeat;background-position: center center;cursor: pointer;}
+  /*vera删除hover颜色*/
+  .jedateblue .daybox .arthead em:hover{}
+  .jedateblue .daybox .arthead p{width: 100%;line-height:40px;float: left;text-align:center;font-size: 14px;}
+  /*vera修改头部文字底色*/
+  .jedateblue .daybox .arthead .ymbtn{padding: 8px 10px;color:#22272b;border-radius: 4px;cursor:pointer;}
+  /*vera删除hover颜色*/
+  .jedateblue .daybox .arthead .ymbtn:hover{}
+  /*vera修改中部上下border*/
+  .jedateblue .daybox .artcont{overflow: hidden;position: relative;border-top: 1px #cecece solid;border-bottom: 1px #cecece solid;float: left;}
+  .jedateblue .daybox .artcont.spaer:after{width: 1px;background-color:#ddd;position: absolute;top: 0;bottom: 0;left:50%;content: "";}
+  /*vera删除中部外框padding、宽度*/
+  .jedateblue .daybox .contlist{width: 230px;float: left;overflow:hidden;}
+  /*vera删除蓝色外框白色border*/
+  .jedateblue .daysul{width: 100%;border-collapse: collapse;border-spacing: 0;}
+  /*vera修改蓝色*/
+  .jedateblue .daysul thead{background-color:rgb(3, 121, 242);}
+  /*vera修改蓝框字体为白色*/
+  .jedateblue .daysul th{width:30px;height:30px;  text-align:center; position:relative; overflow:hidden;font-size: 12px;font-weight: 400;color: #fff;}
+  .jedateblue .daysul td{width:30px;height:30px;  text-align:center; position:relative; overflow:hidden;font-size: 14px;font-family: Arial, "\5b8b\4f53", 'sans-serif';}
+  .jedateblue .daysul td .nolunar{line-height: 40px;font-size: 14px;font-family: Arial, "\5b8b\4f53", 'sans-serif';}
+  /*vera删除数字区块padding*/
+  .jedateblue .daysul td .solar{height:16px;line-height:16px;font-size: 14px;display: block;font-family: Arial, "\5b8b\4f53", 'sans-serif';}
+  .jedateblue .daysul td .lunar{height:16px;line-height:16px;font-size: 12px;overflow:hidden;display: block;font-family: Arial, "\5b8b\4f53", 'sans-serif';color: #cccccc;}
+  .jedateblue .daysul td.actdate:hover,
+  .jedateblue .daysul td.actdate .lunar{background-color: #007bff;color:#fff;}
+  .jedateblue .daysul td.other,.jedateblue .daysul td.other .nolunar,.jedateblue .daysul td.other .lunar{color:#cccccc;}
+  .jedateblue .daysul td.disabled,.jedateblue .daysul td.disabled .nolunar,.jedateblue .daysul td.disabled .lunar{ color:#bbb;}
+  .jedateblue .daysul td.contain,.jedateblue .daysul td.contain:hover{background-color: #D0F0E3;}
+  .jedateblue .daysul td.disabled:hover{background-color:rgb(3, 121, 242);}
+  /*vera更改hover颜色(5种)*/
+  .jedateblue .daysul td:hover{background-color: rgb(3, 121, 242);color: #fff;}
+  .jedateblue .daysul td:hover .works + p > span.solar  {
+     color: #fff;
+  }
+  .jedateblue .daysul td:hover .marks + p > span.solar  {
+     color: #fff;
+  }
+  .daysul tbody tr td:first-child:hover p .solar{
+     color: #fff;
+  }
+  .daysul tbody tr td:last-child:hover p .solar{
+     color: #fff;
+  }
+  .jedateblue .daysul td.red{ color:#ff0000;}
+  /*vera删除marks background-color*/
+  .jedateblue .daysul td .marks{ width:5px; height:5px; -webkit-border-radius:50%;border-radius:50%; position:absolute; right:2px; top:4px;}
+  /* .jedateblue .daysul td.actdate .marks{ width:5px; height:5px; background-color:#fff; -webkit-border-radius:50%;border-radius:50%; position:absolute; right:2px; top:4px;} */
+  /*vera marks文字color*/
+  .jedateblue .daysul td .marks + p > span.solar{
+     color: #ff0000;
+  }
+  /*vera marks文字 disabled color*/
+  .jedateblue .daysul td.disabled .marks + p > span.solar{
+     color: #cecece;
+  }
+  .jedateblue .timebox{overflow: hidden;background-color: #fff;}
+  /*vera时分秒头部*/
+  .jedateblue .timebox .arthead{background-color: #fff;color:#fff;height:40px; line-height:40px;text-align: center;font-size: 14px;padding: 0 25px;position: relative;}
+  .jedateblue .timebox .arthead em{width:25px;height:40px; line-height:40px;position:absolute;top:0;background-repeat: no-repeat;background-position: center center;cursor: pointer;}
+  /* .jedateblue .timebox .arthead em:hover{background-color:#007bff;} */
+  .jedateblue .timebox .arthead .close{right:0;}
+  /*vera时分秒中部border删除*/
+  .jedateblue .timebox .artcont{overflow: hidden;position: relative;border-top: 1px #cecece solid;border-bottom: 1px #cecece solid;}
+  .jedateblue .timebox .artcont.spaer:after{width: 1px;background-color:#ddd;position: absolute;top: 0;bottom: 0;left:49.8%;content: "";}
+  .jedateblue .timebox .timelist{margin:0 auto;padding:0 12px 7px 11px;float: left;}
+  .jedateblue .timebox .textbox{margin:0 auto;overflow: hidden;padding-top: 4px;text-align: center;}
+  .jedateblue .timebox .textbox p{width: 70px;display:inline-block;height: 30px;line-height:30px;font-size: 14px;text-align: center;overflow: hidden;}
+  /*vera修改时分秒宽度*/
+  .jedateblue .timebox .contime{width:211px;margin:0 auto 6px auto;border: 1px solid #ddd;border-right: none;overflow: hidden;}
+  .jedateblue .timebox .contime ul{width: 70px;height:174px;float: left;border-right:1px solid #ddd;overflow: hidden;overflow-y: auto;}
+  .jedateblue .timebox .contime ul li{width:100%;float:left;text-align: center;height:25px; line-height:25px;font-size: 14px;font-family: Arial, "\5b8b\4f53", 'sans-serif';}
+  .jedateblue .timebox .contime ul li:hover{background-color: #F2F2F2;}
+  .jedateblue .timebox .contime ul li.action,.jedateblue .timebox .contime ul li.action:hover{background-color: #007bff;color:#fff;}
+  .jedateblue .timebox .contime ul li.disabled{ background-color: #fbfbfb;color:#ccc;}
+  .jedateblue .timebox .contime ul li.disabled.action{ background-color: #007bff;color:#FFFFFF;filter:Alpha(opacity=30);opacity:.3; }
+  
+  /*vera删除下部border*/
+  .jedateblue .mainfoot{height:36px; line-height:36px;padding: 0 4px;}
+  /*vera删除border-radius:4px;*/
+  .jedateblue .mainfoot .timecon{line-height:36px;display: inline-block;float: left;font-size: 14px;border:1px #ddd solid;margin-top:4px;overflow: hidden;}
+  .jedateblue .mainfoot .timecon em{width:24px;float:left;padding: 0;border:none;text-align: center;display:block;height:26px;line-height:26px;text-decoration: none;outline:none;-moz-outline:none;font-size: 14px;font-family:'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, 'Lantinghei SC', 'Hiragino Sans GB', 'Microsoft YaHei', '\5FAE\8F6F\96C5\9ED1', STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;}
+  .jedateblue .mainfoot .timecon em[disabled]{background-color: #f0f0f0;color: #aaa;}
+  .jedateblue .mainfoot .timecon span{padding:0 5px;float:left;height:26px;line-height:24px;font-style:normal;display:block;text-align: center;background-color: #f0f0f0;}
+  .jedateblue .mainfoot .timecon i{width:6px;float:left;height:26px;line-height:24px;font-style:normal;display:block;text-align: center;}
+  .jedateblue .mainfoot .btnscon{line-height:36px;margin-top:4px;display: inline-block;float: right;font-size: 12px;border-radius:4px;overflow: hidden;}
+  /*vera修改背景颜色和文字颜色添加三个button样式*/
+  .jedateblue .mainfoot .btnscon span{float:left; padding:0 5px;border-right: 1px #fff solid;;color: #22272b;display: block;height:28px;line-height:28px; text-align:center;overflow: hidden;font-family: Arial, "\5b8b\4f53", 'sans-serif';border: 1px solid rgb(215,215,215);border-radius: 4px;margin-right: 10px;}
+  .jedateblue .mainfoot .btnscon span:last-child{
+     margin-right: 0;
+  }
+  /*vera添加button hover样式*/
+  .jedateblue .mainfoot .btnscon span:hover{
+     background-color: rgba(3, 121, 242, 1);
+     color: #fff;
+     border-color: rgba(3, 121, 242, 1);
+  }
+  .jedateblue .daysul td .festival{
+     color: #007bff;
+ }
+ /*hover变蓝*/
+ .form-group > div > .input-group:focus{
+     border: solid 2px #3998fc;
+ }
+ /*下拉框靠右*/
+ .dateRangeTime .dateRangeTimeGroup {
+     display: flex;
+     width: 100%;
+     justify-content: space-between;
+ }
+ /*禁用样式*/
+ .jedate-disabled > .input-group-addon{
+     background-color: #e9ecef;
+ }
+ /*两个datatime左边对齐*/
+ .dateRangeTime .input-group{
+     padding-left: 0!important;
+ }
+ /*基础样式控制*/
+ .input-append.date .add-on i, .input-prepend.date .add-on i, .input-group.date .input-group-addon span
+ {
+     width:auto;
+     display: block;
+     line-height: 32px;
+ }
+ .dateRangeTime > .dateRangeTimeGroup > div:last-child{
+     padding: 0!important;
+     width: 32px;
+ }
+ .dateRangeTime > .dateRangeTimeGroup > div:last-child > .input-group-addon > span{
+     text-align: center;
+     height: 32px;
+ }
+ /*下拉旋转*/
+ .focusborder > .dateRangeTimeGroup > div:last-child > .input-group-addon > span{/*datatimepicker*/
+     transform: rotate(180deg);
+ 
+ }
+
+ 
